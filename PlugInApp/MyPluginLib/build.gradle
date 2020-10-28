@@ -1,0 +1,21 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+task clearJar(type: Delete) {
+    delete 'build/libs/MyPluginLib.jar'
+}
+
+task makeJar(type: Copy) {
+    from 'build/libs'
+    into '../app/lib'
+    include('MyPluginLib.jar')
+    rename('MyPluginLib.jar', 'class.jar')
+}
+
+makeJar.dependsOn(clearJar, jar)
