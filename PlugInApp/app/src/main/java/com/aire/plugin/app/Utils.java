@@ -2,6 +2,7 @@ package com.aire.plugin.app;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.util.Log;
 
 import java.io.File;
@@ -22,6 +23,13 @@ public class Utils {
         return classLoader;
     }
 
+    /**
+     * 将assets目录下的srcFile文件拷贝到dstFile中
+     *
+     * @param context
+     * @param srcFile
+     * @param dstFile
+     */
     public static void copyAssetFileTo(Context context, String srcFile, String dstFile) {
         try {
             InputStream inputStream = context.getAssets().open(srcFile);
@@ -45,7 +53,7 @@ public class Utils {
     }
 
     public static String getApplicationName(Context context) {
-        // 这里直接解析已经从assets目录解析完成的dex
+        // 这里直接解析已经从assets目录拷贝过来的dex
         File dstApkFile = context.getFileStreamPath("dex"); // /data/user/0/com.aire.plugin.app/files/dex
         try {
             Class packageParserClazz = ReflectionUtil.getClass("android.content.pm.PackageParser");
@@ -58,6 +66,21 @@ public class Utils {
             String applicationName = (String) ReflectionUtil.getFieldObject(applicationInfo.getClass(), "className", applicationInfo);
             return applicationName;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static AssetManager getAssetManager(Context context) {
+        File apkFile = context.getFileStreamPath("dex");
+        try {
+            AssetManager assetManager = AssetManager.class.newInstance();
+            ReflectionUtil.invokeMethod(assetManager, "addAssetPath",
+                    new Class[]{String.class}, new Object[]{apkFile.getAbsolutePath()});
+            return assetManager;
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
         return null;

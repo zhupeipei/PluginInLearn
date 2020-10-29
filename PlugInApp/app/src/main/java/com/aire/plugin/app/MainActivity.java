@@ -3,6 +3,7 @@ package com.aire.plugin.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(newBase);
     }
 
-    public void clickMe(final View view) {
+    public void invokeMethodInPluginApp(final View view) {
         try {
             Class<?> beanClazz = PluginManager.getInstance(this).getClassLoader()
                     .loadClass("com.aire.plugin.pluginbundle.Bean");
@@ -42,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.d("zimotag", e.getMessage());
         }
+    }
+
+    public void getResInPluginApp(View view) {
+        startActivity(new Intent(this, ResForPluginInAppActivity.class));
     }
 }

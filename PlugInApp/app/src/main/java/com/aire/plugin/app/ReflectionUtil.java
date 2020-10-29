@@ -52,4 +52,13 @@ public class ReflectionUtil {
             return null;
         }
     }
+
+    public static Object invokeMethod(Object clazzObj, String methodName, Class[] paramTypes, Object[] parmams) {
+        try {
+            Method method = clazzObj.getClass().getMethod(methodName, paramTypes);
+            return method.invoke(clazzObj, parmams);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

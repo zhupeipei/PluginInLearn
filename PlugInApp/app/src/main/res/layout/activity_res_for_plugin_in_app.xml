@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ResForPluginInAppActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:onClick="getResStrInPluginApp"
+        android:text="获取插件化app中的字符串" />
+
+    <TextView
+        android:id="@+id/main_id_str_from_plugin_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="即将展示插件中的string" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:onClick="getResDrawableInPluginApp"
+        android:text="获取插件化app中的图片" />
+
+    <ImageView
+        android:id="@+id/main_id_str_from_plugin_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
+</LinearLayout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PluginBundle</string>
+    <string name="plugin_bundle_1">PluginBundle1</string>
 </resources>
