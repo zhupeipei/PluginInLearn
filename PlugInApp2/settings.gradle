@@ -1,2 +1,4 @@
+include ':pluginLib'
+include ':PluginBundle'
 include ':app'
 rootProject.name = "PluginInApp2"

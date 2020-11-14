@@ -1,0 +1,7 @@
+本项目搭建了一个基本的插件化框架，对应书的第8章
+8---最简单的插件化解决方案
+该demo把之前的6、7章重写了一遍。
+之前的方案是加载classLoader和applicationName获取类啥的，这个方案不是很好。
+第8章采用的方案是把dex放到PathClassLoader中的pathList字段中，直接加载。
+同时利用反射获取插件中的activity或者service，在manifest中预先注册好，从而启动。
+其中加载资源的方式以及只替换source 还不是很理解。

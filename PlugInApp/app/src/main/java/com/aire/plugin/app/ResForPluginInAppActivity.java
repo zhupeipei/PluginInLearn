@@ -41,7 +41,10 @@ public class ResForPluginInAppActivity extends AppCompatActivity {
 
     private void loadResources() {
         mAssetManager = Utils.getAssetManager(this);
-        mResources = new Resources(mAssetManager, super.getResources().getDisplayMetrics(), super.getResources().getConfiguration());
+        mResources = new Resources(
+                mAssetManager,
+                super.getResources().getDisplayMetrics(),
+                super.getResources().getConfiguration());
         mTheme = mResources.newTheme();
         mTheme.setTo(super.getTheme());
     }

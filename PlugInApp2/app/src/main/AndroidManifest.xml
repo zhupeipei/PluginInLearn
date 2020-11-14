@@ -3,19 +3,25 @@
     package="com.aire.plugininapp2">
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PluginInApp2">
+        <service
+            android:name="com.aire.pluginbundle.MyService"
+            android:enabled="true"
+            android:exported="false"></service>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.aire.pluginbundle.PluginActivity" />
     </application>
 
 </manifest>
